@@ -79,8 +79,8 @@ public static class Config
             NameIdentifierFormat = SamlConstants.NameIdentifierFormats.Transient,
             AssertionConsumerServices = {
                 new Service(SamlConstants.BindingTypes.HttpPost, "https://localhost:5002/signin-saml"),
-                new Service(SamlConstants.BindingTypes.HttpPost, "https://dev2k16server1.sparinc.com/idp/signin-saml"),
-                new Service(SamlConstants.BindingTypes.HttpPost, "https://betaapp5.sparinc.com/idp/signin-saml")
+                new Service(SamlConstants.BindingTypes.HttpPost, "https://dev2k16server1.sparinc.com/sp/signin-saml"),
+                new Service(SamlConstants.BindingTypes.HttpPost, "https://betaapp5.sparinc.com/sp/signin-saml")
                 },
             ClaimsMapping = new Dictionary<string, string>
             {

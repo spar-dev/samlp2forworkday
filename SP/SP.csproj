@@ -7,5 +7,8 @@
   </PropertyGroup>
  <ItemGroup>
       <PackageReference Include="Rsk.Saml" Version="5.4.1" />
+      <PackageReference Include="Serilog.AspNetCore" Version="8.0.0" />
+		 <PackageReference Include="Serilog.Settings.Configuration" Version="8.0.0" />
+		 <PackageReference Include="Serilog.Expressions" Version="4.0.0" />
     </ItemGroup>
 </Project>

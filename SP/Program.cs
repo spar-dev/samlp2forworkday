@@ -1,6 +1,21 @@
 using Rsk.AspNetCore.Authentication.Saml2p;
+using Serilog;
+using SP.Monitoring;
+
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+ var configuration = new ConfigurationBuilder()
+            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+            .AddJsonFile($"appsettings.{builder.Environment.EnvironmentName}.json", optional: true)
+            .AddCommandLine(args)
+            .Build();
+    // Setup logging, tracing and metrics
+    var logger = LoggerSetup.Init(builder);
+    Log.Logger = logger;
+
+    Log.Information("Starting the app");
 
 string sSamlLicenseKey = builder.Configuration["App:RSKSamlLicense"] ?? string.Empty;
 string sSamlIDPAddress = builder.Configuration["App:IDPMetaURL"] ?? string.Empty;
@@ -33,13 +48,7 @@ builder.Services.AddAuthentication(options =>
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (!app.Environment.IsDevelopment())
-{
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-}
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
