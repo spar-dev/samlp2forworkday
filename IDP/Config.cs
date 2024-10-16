@@ -1,4 +1,5 @@
-﻿using Duende.IdentityServer;
+﻿using System.Security.Cryptography.X509Certificates;
+using Duende.IdentityServer;
 using Duende.IdentityServer.Models;
 using Rsk.Saml;
 using Rsk.Saml.Models;
@@ -88,6 +89,10 @@ public static class Config
                 { "UTYPE", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/UTYPE"},
                 { "PID", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/PID"},
                 { "WDID", "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/WDID"},                 
+            },
+            SigningCertificates = new List<X509Certificate2>()
+            {
+              new X509Certificate2("Resources/MyTestSamlCert.cer","PYt4cwrMem9FxR6v"),
             }
         }
     };

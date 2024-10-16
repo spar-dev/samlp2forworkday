@@ -1,3 +1,4 @@
+using System.Security.Cryptography.X509Certificates;
 using Rsk.AspNetCore.Authentication.Saml2p;
 using Serilog;
 using SP.Monitoring;
@@ -42,7 +43,8 @@ builder.Services.AddAuthentication(options =>
         options.ServiceProviderOptions = new SpOptions
         {
             EntityId = "RSKSaml",
-            MetadataPath = sSamlMetaDataPath
+            MetadataPath = sSamlMetaDataPath,
+            SigningCertificate = new X509Certificate2("Resources\\MyTestSamlCert.pfx", "PYt4cwrMem9FxR6v"),
         };
     });
 

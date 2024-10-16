@@ -2,3 +2,4 @@
 IDP/appsettings.Development.json
 SP/appsettings.Development.json
 /mysigncertificate
+/IDP/Resources
